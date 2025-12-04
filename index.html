@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Care Coffee - Estd 2015</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Georgia', serif;
+            background: linear-gradient(to bottom, #0a0a0a, #1a1a1a);
+            color: #e8e8e8;
+            line-height: 1.6;
+            min-height: 100vh;
+        }
+
+        .header {
+            background: linear-gradient(rgba(0,0,0,0.75), rgba(0,0,0,0.75)), url('https://images.unsplash.com/photo-1442512595331-e89e73853f31?w=1600&q=85');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            text-align: center;
+            padding: 80px 20px;
+            border-bottom: 3px solid #8b6f47;
+            box-shadow: 0 4px 20px rgba(139, 111, 71, 0.3);
+        }
+
+        .logo-container {
+            margin-bottom: 20px;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .windmill {
+            width: 90px;
+            height: 90px;
+            margin: 0 auto 20px;
+            filter: drop-shadow(0 4px 6px rgba(139, 111, 71, 0.5));
+        }
+
+        .windmill svg {
+            width: 100%;
+            height: 100%;
+            fill: #e8e8e8;
+            animation: gentleGlow 3s ease-in-out infinite;
+        }
+
+        @keyframes gentleGlow {
+            0%, 100% { filter: brightness(1); }
+            50% { filter: brightness(1.2); }
+        }
+
+        h1 {
+            font-size: 4em;
+            letter-spacing: 10px;
+            margin-bottom: 15px;
+            color: #e8e8e8;
+            font-weight: 300;
+            text-shadow: 2px 2px 8px rgba(0, 0, 0, 0.7);
+        }
+
+        .estd {
+            font-size: 1.3em;
+            letter-spacing: 5px;
+            border-top: 2px solid #8b6f47;
+            border-bottom: 2px solid #8b6f47;
+            display: inline-block;
+            padding: 10px 50px;
+            margin-bottom: 15px;
+            background: rgba(139, 111, 71, 0.1);
+        }
+
+        .stars {
+            color: #8b6f47;
+            font-size: 1.5em;
+            letter-spacing: 15px;
+            text-shadow: 0 0 10px rgba(139, 111, 71, 0.5);
+        }
+
+        .tagline {
+            font-style: italic;
+            color: #c0c0c0;
+            margin-top: 20px;
+            font-size: 1.2em;
+            text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 60px 20px;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3em;
+            margin-bottom: 50px;
+            color: #8b6f47;
+            letter-spacing: 4px;
+            font-weight: 300;
+            text-shadow: 0 2px 10px rgba(139, 111, 71, 0.3);
+            position: relative;
+        }
+
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 100px;
+            height: 3px;
+            background: linear-gradient(to right, transparent, #8b6f47, transparent);
+            margin: 20px auto 0;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 35px;
+            margin-bottom: 80px;
+        }
+
+        .menu-item {
+            background: linear-gradient(145deg, #2a2a2a, #242424);
+            border: 2px solid #3a3a3a;
+            border-radius: 12px;
+            overflow: hidden;
+            transition: all 0.4s ease;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-item:hover {
+            transform: translateY(-8px) scale(1.02);
+            border-color: #8b6f47;
+            box-shadow: 0 12px 30px rgba(139, 111, 71, 0.4);
+        }
+
+        .menu-item-image {
+            width: 100%;
+            height: 240px;
+            background: linear-gradient(135deg, #3a3a3a 0%, #2a2a2a 100%);
+            position: relative;
+            overflow: hidden;
+            border-bottom: 3px solid #8b6f47;
+        }
+        
+        .menu-item-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.4s ease;
+        }
+
+        .menu-item:hover .menu-item-image img {
+            transform: scale(1.1);
+        }
+
+        .menu-item-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(139, 111, 71, 0.95);
+            color: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.85em;
+            font-weight: bold;
+            letter-spacing: 1px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .menu-item-content {
+            padding: 25px;
+        }
+
+        .menu-item-name {
+            font-size: 1.6em;
+            margin-bottom: 10px;
+            color: #e8e8e8;
+            font-weight: 400;
+        }
+
+        .menu-item-desc {
+            color: #b0b0b0;
+            font-size: 0.95em;
+            margin-bottom: 20px;
+            font-style: italic;
+            line-height: 1.5;
+        }
+
+        .menu-item-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 15px;
+            border-top: 1px solid #3a3a3a;
+        }
+
+        .menu-item-price {
+            font-size: 1.5em;
+            color: #8b6f47;
+            font-weight: bold;
+            text-shadow: 0 2px 5px rgba(139, 111, 71, 0.3);
+        }
+
+        .btn-add {
+            background: linear-gradient(135deg, #8b6f47, #a0845a);
+            color: #fff;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: all 0.3s ease;
+            letter-spacing: 1px;
+            font-weight: bold;
+            box-shadow: 0 4px 15px rgba(139, 111, 71, 0.3);
+        }
+
+        .btn-add:hover {
+            background: linear-gradient(135deg, #a0845a, #8b6f47);
+            transform: translateY(-2px);
+            box-shadow: 0 6px 20px rgba(139, 111, 71, 0.5);
+        }
+
+        .btn-add:active {
+            transform: translateY(0);
+        }
+
+        .cart-section {
+            background: linear-gradient(145deg, #2a2a2a, #242424);
+            border: 3px solid #8b6f47;
+            border-radius: 12px;
+            padding: 40px;
+            margin-top: 60px;
+            box-shadow: 0 8px 30px rgba(139, 111, 71, 0.3);
+        }
+
+        .cart-title {
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            color: #8b6f47;
+            text-align: center;
+            letter-spacing: 3px;
+            font-weight: 300;
+        }
+
+        .cart-items {
+            margin-bottom: 30px;
+            max-height: 500px;
+            overflow-y: auto;
+        }
+
+        .cart-items::-webkit-scrollbar {
+            width: 10px;
+        }
+
+        .cart-items::-webkit-scrollbar-track {
+            background: #1a1a1a;
+            border-radius: 5px;
+        }
+
+        .cart-items::-webkit-scrollbar-thumb {
+            background: #8b6f47;
+            border-radius: 5px;
+        }
+
+        .cart-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px;
+            background: linear-gradient(145deg, #1a1a1a, #222);
+            margin-bottom: 15px;
+            border-radius: 8px;
+            border-left: 4px solid #8b6f47;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+
+        .cart-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 4px 15px rgba(139, 111, 71, 0.2);
+        }
+
+        .cart-item-info {
+            flex: 1;
+        }
+
+        .cart-item-name {
+            font-size: 1.3em;
+            margin-bottom: 5px;
+            color: #e8e8e8;
+        }
+
+        .cart-item-single-price {
+            font-size: 0.9em;
+            color: #a0a0a0;
+        }
+
+        .cart-item-controls {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
+        .qty-control {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: #2a2a2a;
+            padding: 8px 15px;
+            border-radius: 8px;
+            border: 1px solid #3a3a3a;
+        }
+
+        .qty-btn {
+            background: #8b6f47;
+            color: #fff;
+            border: none;
+            width: 35px;
+            height: 35px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 1.3em;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(139, 111, 71, 0.3);
+        }
+
+        .qty-btn:hover {
+            background: #a0845a;
+            transform: scale(1.1);
+        }
+
+        .qty-btn:active {
+            transform: scale(0.95);
+        }
+
+        .qty-display {
+            min-width: 40px;
+            text-align: center;
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #8b6f47;
+        }
+
+        .cart-item-price {
+            font-size: 1.4em;
+            color: #8b6f47;
+            min-width: 120px;
+            text-align: right;
+            font-weight: bold;
+        }
+
+        .btn-remove {
+            background: linear-gradient(135deg, #6a3a3a, #8a4a4a);
+            color: #fff;
+            border: none;
+            padding: 10px 18px;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            box-shadow: 0 2px 8px rgba(106, 58, 58, 0.3);
+        }
+
+        .btn-remove:hover {
+            background: linear-gradient(135deg, #8a4a4a, #aa5a5a);
+            transform: scale(1.05);
+        }
+
+        .cart-total {
+            text-align: right;
+            font-size: 2em;
+            padding: 25px;
+            border-top: 3px solid #8b6f47;
+            margin-top: 25px;
+            color: #8b6f47;
+            font-weight: bold;
+            background: rgba(139, 111, 71, 0.05);
+            border-radius: 8px;
+        }
+
+        .btn-checkout {
+            width: 100%;
+            background: linear-gradient(135deg, #8b6f47, #a0845a);
+            color: #fff;
+            border: none;
+            padding: 18px;
+            font-size: 1.4em;
+            border-radius: 8px;
+            cursor: pointer;
+            margin-top: 25px;
+            letter-spacing: 3px;
+            transition: all 0.3s ease;
+            font-weight: bold;
+            text-transform: uppercase;
+            box-shadow: 0 6px 20px rgba(139, 111, 71, 0.4);
+        }
+
+        .btn-checkout:hover {
+            background: linear-gradient(135deg, #a0845a, #b89564);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(139, 111, 71, 0.6);
+        }
+
+        .btn-checkout:active {
+            transform: translateY(-1px);
+        }
+
+        .empty-cart {
+            text-align: center;
+            padding: 60px 40px;
+            color: #a0a0a0;
+            font-style: italic;
+            font-size: 1.2em;
+        }
+
+        .empty-cart::before {
+            content: '☕';
+            display: block;
+            font-size: 4em;
+            margin-bottom: 20px;
+            opacity: 0.3;
+        }
+
+        .footer {
+            background: linear-gradient(to top, #000, #0a0a0a);
+            text-align: center;
+            padding: 40px;
+            margin-top: 80px;
+            border-top: 3px solid #8b6f47;
+            color: #a0a0a0;
+            box-shadow: 0 -4px 20px rgba(139, 111, 71, 0.2);
+        }
+
+        .footer p {
+            margin: 10px 0;
+            letter-spacing: 2px;
+        }
+
+        .footer p:first-child {
+            color: #8b6f47;
+            font-size: 1.1em;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5em;
+                letter-spacing: 5px;
+            }
+
+            .section-title {
+                font-size: 2em;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 25px;
+            }
+
+            .cart-item {
+                flex-direction: column;
+                gap: 20px;
+                text-align: center;
+            }
+
+            .cart-item-controls {
+                width: 100%;
+                justify-content: center;
+                flex-wrap: wrap;
+            }
+
+            .cart-item-price {
+                min-width: auto;
+            }
+
+            .container {
+                padding: 40px 15px;
+            }
+
+            .cart-section {
+                padding: 25px 15px;
+            }
+        }
+
+        .loading-placeholder {
+            background: linear-gradient(90deg, #2a2a2a 25%, #3a3a3a 50%, #2a2a2a 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+    </style>
+</head>
+<body>
+    <header class="header">
+        <div class="logo-container">
+            <div class="windmill">
+                <svg viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+                    <polygon points="100,50 70,80 100,80" transform="rotate(0 100 100)"/>
+                    <polygon points="100,50 70,80 100,80" transform="rotate(90 100 100)"/>
+                    <polygon points="100,50 70,80 100,80" transform="rotate(180 100 100)"/>
+                    <polygon points="100,50 70,80 100,80" transform="rotate(270 100 100)"/>
+                    <circle cx="100" cy="100" r="8"/>
+                    <rect x="90" y="100" width="20" height="60" rx="2"/>
+                    <rect x="60" y="155" width="80" height="5"/>
+                    <rect x="95" y="130" width="10" height="15" rx="5"/>
+                </svg>
+            </div>
+            <h1>Care coffee</h1>
+            <div class="estd">ESTD 2015</div>
+            <div class="stars">★ ★ ★</div>
+            <p class="tagline">Crafting Perfect Coffee Since 2015</p>
+        </div>
+    </header>
+
+    <div class="container">
+        <h2 class="section-title">Menu Spesial Kami</h2>
+        
+        <div class="menu-grid" id="menuGrid">
+            <!-- Menu items will be generated by JavaScript -->
+        </div>
+
+        <div class="cart-section">
+            <h3 class="cart-title">Pesanan Anda</h3>
+            <div id="cartItems" class="cart-items">
+                <div class="empty-cart">Keranjang pesanan masih kosong</div>
+            </div>
+            <div id="cartTotal" class="cart-total" style="display: none;">
+                Total: Rp <span id="totalAmount">0</span>
+            </div>
+            <button class="btn-checkout" id="checkoutBtn" style="display: none;">Pesan Sekarang</button>
+        </div>
+    </div>
+
+    <footer class="footer">
+        <p>&copy; 2015-2025 Care Coffee. All rights reserved.</p>
+        <p>Serving Excellence for Over a Century</p>
+    </footer>
+
+    <script>
+        const menuData = [
+            {
+                id: 1,
+                name: 'Espresso Classic',
+                desc: 'Kopi espresso Italia yang kuat dengan crema sempurna dan aroma yang mendalam',
+                price: 25000,
+                image: 'https://images.unsplash.com/photo-1579992357154-faf4bde95b3d?w=500&q=80',
+                badge: 'Best Seller'
+            },
+            {
+                id: 2,
+                name: 'Cappuccino Premium',
+                desc: 'Perpaduan harmonis espresso, steamed milk, dan foam susu yang lembut',
+                price: 35000,
+                image: 'https://images.unsplash.com/photo-1534778101976-62847782c213?w=500&q=80',
+                badge: 'Popular'
+            },
+            {
+                id: 3,
+                name: 'Cafe Latte',
+                desc: 'Espresso dengan susu hangat yang creamy dan sentuhan latte art cantik',
+                price: 32000,
+                image: 'https://images.unsplash.com/photo-1561882468-9110e03e0f78?w=500&q=80',
+                badge: 'Signature'
+            },
+            {
+                id: 4,
+                name: 'Americano',
+                desc: 'Espresso berkualitas tinggi yang diencerkan dengan air panas untuk rasa yang smooth',
+                price: 28000,
+                image: 'https://images.unsplash.com/photo-1551030173-122aabc4489c?w=500&q=80',
+                badge: 'Classic'
+            },
+            {
+                id: 5,
+                name: 'Mocha Delight',
+                desc: 'Kombinasi magis espresso, cokelat premium, susu, dan whipped cream',
+                price: 38000,
+                image: 'https://images.unsplash.com/photo-1517487881594-2787fef5ebf7?w=500&q=80',
+                badge: 'Sweet'
+            },
+            {
+                id: 6,
+                name: 'Caramel Macchiato',
+                desc: 'Espresso dengan vanilla syrup, susu berbusa, dan drizzle caramel yang manis',
+                price: 40000,
+                image: 'https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=500&q=80',
+                badge: 'Premium'
+            }
+        ];
+
+        let cart = [];
+
+        function renderMenu() {
+            const menuGrid = document.getElementById('menuGrid');
+            menuGrid.innerHTML = menuData.map(item => `
+                <div class="menu-item" onclick="addToCart(${item.id})">
+                    <div class="menu-item-image">
+                        <img src="${item.image}" 
+                             alt="${item.name}" 
+                             loading="lazy"
+                             onerror="this.src='data:image/svg+xml,%3Csvg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 400 300%22%3E%3Crect fill=%22%233a3a3a%22 width=%22400%22 height=%22300%22/%3E%3Ctext x=%2250%25%22 y=%2250%25%22 fill=%22%238b6f47%22 font-size=%2260%22 text-anchor=%22middle%22 dy=%22.3em%22%3E☕%3C/text%3E%3C/svg%3E'">
+                        <div class="menu-item-badge">${item.badge}</div>
+                    </div>
+                    <div class="menu-item-content">
+                        <h3 class="menu-item-name">${item.name}</h3>
+                        <p class="menu-item-desc">${item.desc}</p>
+                        <div class="menu-item-footer">
+                            <span class="menu-item-price">Rp ${item.price.toLocaleString('id-ID')}</span>
+                            <button class="btn-add" onclick="event.stopPropagation(); addToCart(${item.id})">+ Tambah</button>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        function addToCart(itemId) {
+            const item = menuData.find(m => m.id === itemId);
+            const existingItem = cart.find(c => c.id === itemId);
+
+            if (existingItem) {
+                existingItem.quantity++;
+            } else {
+                cart.push({...item, quantity: 1});
+            }
+
+            renderCart();
+            
+            // Visual feedback
+            const btn = event.target;
+            btn.textContent = '✓ Ditambahkan';
+            btn.style.background = 'linear-gradient(135deg, #4a8b4a, #5aa05a)';
+            setTimeout(() => {
+                btn.textContent = '+ Tambah';
+                btn.style.background = '';
+            }, 1000);
+        }
+
+        function updateQuantity(itemId, change) {
+            const item = cart.find(c => c.id === itemId);
+            if (item) {
+                item.quantity += change;
+                if (item.quantity <= 0) {
+                    removeFromCart(itemId);
+                } else {
+                    renderCart();
+                }
+            }
+        }
+
+        function removeFromCart(itemId) {
+            cart = cart.filter(c => c.id !== itemId);
+            renderCart();
+        }
+
+        function renderCart() {
+            const cartItems = document.getElementById('cartItems');
+            const cartTotal = document.getElementById('cartTotal');
+            const checkoutBtn = document.getElementById('checkoutBtn');
+
+            if (cart.length === 0) {
+                cartItems.innerHTML = '<div class="empty-cart">Keranjang pesanan masih kosong</div>';
+                cartTotal.style.display = 'none';
+                checkoutBtn.style.display = 'none';
+                return;
+            }
+
+            cartItems.innerHTML = cart.map(item => `
+                <div class="cart-item">
+                    <div class="cart-item-info">
+                        <div class="cart-item-name">☕ ${item.name}</div>
+                        <div class="cart-item-single-price">@ Rp ${item.price.toLocaleString('id-ID')}</div>
+                    </div>
+                    <div class="cart-item-controls">
+                        <div class="qty-control">
+                            <button class="qty-btn" onclick="updateQuantity(${item.id}, -1)">−</button>
+                            <span class="qty-display">${item.quantity}</span>
+                            <button class="qty-btn" onclick="updateQuantity(${item.id}, 1)">+</button>
+                        </div>
+                        <span class="cart-item-price">Rp ${(item.price * item.quantity).toLocaleString('id-ID')}</span>
+                        <button class="btn-remove" onclick="removeFromCart(${item.id})">Hapus</button>
+                    </div>
+                </div>
+            `).join('');
+
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            document.getElementById('totalAmount').textContent = total.toLocaleString('id-ID');
+            cartTotal.style.display = 'block';
+            checkoutBtn.style.display = 'block';
+        }
+
+        document.getElementById('checkoutBtn').addEventListener('click', function() {
+            if (cart.length === 0) return;
+            
+            const orderSummary = cart.map(item => 
+                `${item.name} x${item.quantity} - Rp ${(item.price * item.quantity).toLocaleString('id-ID')}`
+            ).join('\n');
+            
+            const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+            
+            alert(`✅ Terima kasih atas pesanan Anda!\n\n📋 DETAIL PESANAN:\n${orderSummary}\n\n💰 TOTAL: Rp ${total.toLocaleString('id-ID')}\n\n⏱️ Pesanan Anda sedang diproses...\nEstimasi waktu: 10-15 menit`);
+            
+            cart = [];
+            renderCart();
+        });
+
+        // Initialize
+        renderMenu();
+    </script>
+</body>
+</html>
